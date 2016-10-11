@@ -108,14 +108,14 @@ body{
     position: relative;
     left: 65%;
     margin-top: 5px;
-    width: 75px;
+    width: 32%;
 }
 
 #registerBtn{
     position: relative;
     left: 55%;
     margin-top: 10px;
-    width: 100px;
+    width: 40%;
 }
 
 .greenBtn{
