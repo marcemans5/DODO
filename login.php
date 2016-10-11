@@ -24,7 +24,7 @@ class login{
             return FALSE;
         }
 
-        $pdo = new PDO("mysql:host=localhost;dbname=deb43619_marc", "deb43619_marc", "Password.");
+        $pdo = new PDO("mysql:host=$DBhost;dbname=$DB", "$DBuser", "$DBpassw");
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         $stmt = $pdo->prepare("SELECT * FROM dodo_gebruikers WHERE Gebruikersnaam=:gn;");
