@@ -12,6 +12,9 @@ if(!function_exists("isLoggedIn")){
     </table>
     <button id="logoutBtn" class="redBtn" onclick="logout()">Logout</button>
 </div>
+<hr />
+
+
 <script>
     function logout(){
         $.ajax("logout.php").done(function (){

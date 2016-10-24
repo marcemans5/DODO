@@ -198,3 +198,25 @@ body{
     border: 1px solid darkgray;
     border-radius: 25px;
 }
+
+.wedstrijdTbl {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid green;
+}
+
+.wedstrijdTbl th {
+    background-color: green;
+    color: white;
+    height: 30px;
+}
+
+.wedstrijdTbl td {
+    border-bottom: 1px solid green;
+    height: 20px;
+}
+
+.wedstrijdTbl tbody tr:hover {
+    background: rgba(128, 128, 128, 0.5);
+}
