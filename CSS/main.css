@@ -67,7 +67,7 @@ body{
 
 #logoutBtn{
     position: absolute;
-    bottom: 20px;
+    top: 120px;
     right: 20px;
     width: 75px;
 }
