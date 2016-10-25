@@ -14,7 +14,7 @@ if(!function_exists("isLoggedIn")){
     <hr />
     <form method="post" action="search.php">
         <input type="text" placeholder="Zoeken" />
-        <button type="submit" value="submit" class="blueBTN">Zoek</button>
+        <button type="submit" value="submit" class="blueBTN" name="search">Zoek</button>
     </form>
 </div>
 
