@@ -23,7 +23,7 @@ function isLoggedIn(){
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="CSS/main.css">
         <script src="js/jquery.min.js"></script>
-        <script src="getNews.js"></script>
+        <script src="js/getNews.js"></script>
         <title>DODO</title>
     </head>
     <body>

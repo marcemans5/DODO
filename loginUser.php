@@ -11,11 +11,6 @@ if(!function_exists("isLoggedIn")){
         <tr><td><B>Rechten:</b></td><td><?php echo $_SESSION["Admin"] == 1 ? 'Admin' : 'Normaal'; ?></td></tr>
     </table>
     <button id="logoutBtn" class="redBtn" onclick="logout()">Logout</button>
-    <hr />
-    <form method="post" action="search.php">
-        <input type="text" placeholder="Zoeken" />
-        <button type="submit" value="submit" class="blueBTN" name="search">Zoek</button>
-    </form>
 </div>
 
 <script>
