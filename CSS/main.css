@@ -42,7 +42,7 @@ body{
     top: 8px;
     left: 85%;
     width: 14%;
-    min-height: 160px;
+    min-height: 200px;
 }
 
 #newsItems{
@@ -67,7 +67,7 @@ body{
 
 #logoutBtn{
     position: absolute;
-    top: 120px;
+    top: 150px;
     right: 20px;
     width: 75px;
 }
