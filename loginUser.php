@@ -9,9 +9,14 @@ if(!function_exists("isLoggedIn")){
     <table id="userTbl">
         <tr><td><b>Punten:</b></td></tr>
         <tr><td><?php echo $_SESSION["Punten"]; ?></td></tr>
-        <tr><td><b>Rechten:</b></td></tr>
-        <tr><td><?php echo $_SESSION["Admin"] == 1 ? 'Admin' : 'Normaal'; ?></td></tr>
     </table>
+        <?php
+            if($_SESSION["Admin"] == 1){
+                ?>
+                <button id="adminBtn" class="greenBtn" onclick="admin()">Adminpanel</button>
+                <?php
+            }
+        ?>
     <button id="logoutBtn" class="redBtn" onclick="logout()">Logout</button>
 </div>
 
@@ -19,6 +24,12 @@ if(!function_exists("isLoggedIn")){
     function logout(){
         $.ajax("logout.php").done(function (){
             location.reload();
-        })
+        });
+    }
+    
+    function admin(){
+        $.ajax("AdminPanel.php").done(function (data){
+            $("#mainInnerContent").html(data);
+        });
     }
 </script>

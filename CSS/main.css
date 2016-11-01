@@ -67,7 +67,7 @@ body{
 
 #logoutBtn{
     position: absolute;
-    top: 150px;
+    top: 160px;
     right: 20px;
     width: 75px;
 }
@@ -121,7 +121,7 @@ body{
     position: relative;
     left: 55%;
     margin-top: 10px;
-    width: 40%;
+    width: 45%;
 }
 
 .greenBtn{
@@ -163,6 +163,19 @@ body{
     background-color: blue;
     border: 1px solid lightblue;
     color: lightblue;
+}
+
+#adminBtn {
+    position: absolute;
+    top: 160px;
+    right: 117px;
+}
+
+#terugBTN {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    width: 100px;
 }
 
 .newsItem{

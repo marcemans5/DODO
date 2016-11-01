@@ -37,7 +37,7 @@ function isLoggedIn(){
             </div>
         </div>
         <div id="mainContent" class="box">
-            <div class="innerContent">
+            <div id="mainInnerContent" class="innerContent">
                 <?php
                 if(isLoggedIn()){
                     include 'loginHome.php';
