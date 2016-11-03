@@ -15,10 +15,15 @@ body{
 }
 
 #mainContent{
-    position: relative;
-    left: 14.7%;
-    width: 70%;
-    height: 1500px;
+    position: fixed;
+    left: 15.2%;
+    width: 69%;
+    height: 95%;
+}
+
+#mainInnerContent {
+    height: 95%;
+    overflow-y: auto;
 }
 
 #logoDiv{
