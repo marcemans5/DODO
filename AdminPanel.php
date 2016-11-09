@@ -23,7 +23,7 @@ if(!isAdmin()){
 ?>
 <h1>Adminpanel</h1>
 <button id="terugBTN" class="redBtn" onclick="terug()">Terug</button>
-<table>
+<table class="Tbl">
     <thead>
         <tr>
             <th>UserID</th>
@@ -49,19 +49,30 @@ if(!isAdmin()){
             $stmt->execute();
             $Wedstrijden = array();
             while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+                $id = $result['GebruikerID'];
                 echo '<tr><td>';
-                echo $result['GebruikerID'];
-                echo '</td><td>';
+                echo $id;
+                echo '</td><td id="Gebruikersnaam-';
+                echo $id;
+                echo '" class="text">';
                 echo $result['Gebruikersnaam'];
-                echo '</td><td>';
+                echo '</td><td id="Email-';
+                echo $id;
+                echo '" class="text">';
                 echo $result['Email'];
-                echo '</td><td>';
+                echo '</td><td id="Voornaam-';
+                echo $id;
+                echo '" class="text">';
                 echo $result['Voornaam'];
-                echo '</td><td>';
+               echo '</td><td id="Achternaam-';
+                echo $id;
+                echo '" class="text">';
                 echo $result['Achternaam'];
                 echo '</td><td>';
                 echo $result['Admin'];
-                echo '</td><td>';
+                echo '</td><td id="Punten-';
+                echo $id;
+                echo '" class="number">';
                 echo $result['Punten'];
                 echo '</td></tr>';
             }
@@ -70,6 +81,46 @@ if(!isAdmin()){
 </table>
 
 <script>
+    var isEditing = false;
+    
+    $(".text").dblclick(function() {
+        if(!isEditing){
+            isEditing = true;
+            var oldVal = $(this).html();
+            var id = $(this).attr('id');
+            id = id.split('-');
+            var field = id[0];
+            var uid = id[1];
+            $(this).html('<input id="editField" type="text" value="' + oldVal + '"/>');
+            $("#editField").keyup( function(e) {
+                if(e.which === 13){
+                    $.post('postUserChange.php', { 'field': field, 'id': uid, 'value': $(this).val() }).done(function(data) {
+                        admin();
+                    });
+                }
+            });
+        }
+    });
+    
+    $(".number").dblclick(function() {
+        if(!isEditing){
+            isEditing = true;
+            var oldVal = $(this).html();
+            var id = $(this).attr('id');
+            id = id.split('-');
+            var field = id[0];
+            var uid = id[1];
+            $(this).html('<input id="editField" type="number" value="' + oldVal + '" style="width: 20%" />');
+            $("#editField").keyup( function(e) {
+                if(e.which === 13){
+                    $.post('postUserChange.php', { 'field': field, 'id': uid, 'value': $(this).val() }).done(function(data) {
+                        admin();
+                    });
+                }
+            });
+        }
+    });
+    
     function terug(){
         $.post("loginHome.php").done(function (data){
             location.reload();

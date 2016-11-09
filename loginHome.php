@@ -7,7 +7,7 @@ if(!function_exists("isLoggedIn")){
 <input type="text" placeholder="Zoeken" id="search" oninput="searchWed()" />
 <h1>Actuele wedstrijden</h1>
 <hr />
-<table class="wedstrijdTbl">
+<table class="Tbl">
     <colgroup>
         <col span="2" style="width: 10%">
         <col>
@@ -34,7 +34,7 @@ if(!function_exists("isLoggedIn")){
         $pdo = new PDO("mysql:host=$DBhost;dbname=$DB", "$DBuser", "$DBpassw");
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $pdo->prepare("SELECT w.WedstrijdID, Team, Stempercentage, Thuis, Doelpunten, SpeelDT FROM `dodo_wedstrijd` w INNER JOIN `dodo_wedteam` wt ON w.WedstrijdID = wt.WedstrijdID WHERE Status = :st ORDER BY w.WedstrijdID, Thuis DESC;");
+        $stmt = $pdo->prepare("SELECT w.WedstrijdID, Team, Stempercentage, Thuis, Doelpunten, SpeelDT FROM `dodo_wedstrijd` w INNER JOIN `dodo_wedteam` wt ON w.WedstrijdID = wt.WedstrijdID WHERE Status = :st ORDER BY w.SpeelDT, Thuis DESC;");
         $stmt->bindParam(":st", $status, PDO::PARAM_STR);
         $stmt->execute();
         $Wedstrijden = array();
@@ -80,7 +80,7 @@ if(!function_exists("isLoggedIn")){
 <hr />
 <h1>Komende wedstrijden</h1>
 <hr />
-<table class="wedstrijdTbl">
+<table class="Tbl">
     <colgroup>
         <col span="2" style="width: 10%">
         <col>
@@ -105,7 +105,7 @@ if(!function_exists("isLoggedIn")){
         $pdo = new PDO("mysql:host=$DBhost;dbname=$DB", "$DBuser", "$DBpassw");
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $pdo->prepare("SELECT w.WedstrijdID, Team, Stempercentage, Thuis, Doelpunten, SpeelDT FROM `dodo_wedstrijd` w INNER JOIN `dodo_wedteam` wt ON w.WedstrijdID = wt.WedstrijdID WHERE Status = :st ORDER BY w.WedstrijdID, Thuis DESC;");
+        $stmt = $pdo->prepare("SELECT w.WedstrijdID, Team, Stempercentage, Thuis, Doelpunten, SpeelDT FROM `dodo_wedstrijd` w INNER JOIN `dodo_wedteam` wt ON w.WedstrijdID = wt.WedstrijdID WHERE Status = :st ORDER BY w.SpeelDT, Thuis DESC;");
         $stmt->bindParam(":st", $status, PDO::PARAM_STR);
         $stmt->execute();
         $Wedstrijden = array();
@@ -151,7 +151,7 @@ if(!function_exists("isLoggedIn")){
 <hr />
 <h1>Afgelopen wedstrijden</h1>
 <hr />
-<table class="wedstrijdTbl">
+<table class="Tbl">
     <colgroup>
         <col span="2" style="width: 10%">
         <col>
@@ -176,7 +176,7 @@ if(!function_exists("isLoggedIn")){
         $pdo = new PDO("mysql:host=$DBhost;dbname=$DB", "$DBuser", "$DBpassw");
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $pdo->prepare("SELECT w.WedstrijdID, Team, Stempercentage, Thuis, Doelpunten, SpeelDT FROM `dodo_wedstrijd` w INNER JOIN `dodo_wedteam` wt ON w.WedstrijdID = wt.WedstrijdID WHERE Status = :st ORDER BY w.WedstrijdID, Thuis DESC;");
+        $stmt = $pdo->prepare("SELECT w.WedstrijdID, Team, Stempercentage, Thuis, Doelpunten, SpeelDT FROM `dodo_wedstrijd` w INNER JOIN `dodo_wedteam` wt ON w.WedstrijdID = wt.WedstrijdID WHERE Status = :st ORDER BY w.SpeelDT, Thuis DESC;");
         $stmt->bindParam(":st", $status, PDO::PARAM_STR);
         $stmt->execute();
         $Wedstrijden = array();

@@ -223,24 +223,24 @@ body{
     border-radius: 25px;
 }
 
-.wedstrijdTbl {
+.Tbl {
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: 1px solid green;
 }
 
-.wedstrijdTbl th {
+.Tbl th {
     background-color: green;
     color: white;
     height: 30px;
 }
 
-.wedstrijdTbl td {
+.Tbl td {
     border-bottom: 1px solid green;
     height: 20px;
 }
 
-.wedstrijdTbl tbody tr:hover {
+.Tbl tbody tr:hover {
     background: rgba(128, 128, 128, 0.5);
 }
