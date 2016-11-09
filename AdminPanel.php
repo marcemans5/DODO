@@ -61,8 +61,8 @@ if(!isAdmin()){
                 echo $result['Voornaam'];
                 echo '</td><td id="Achternaam-' . $id . '" class="text">';
                 echo $result['Achternaam'];
-                echo '</td><td>';
-                echo $result['Admin'];
+                echo '</td><td id="Admin-' . $id . '" class="admin">';
+                echo $result['Admin'] == 1 ? 'Ja' : 'Nee';
                 echo '</td><td id="Punten-' . $id . '" class="number">';
                 echo $result['Punten'];
                 echo '</td></tr>';
@@ -103,6 +103,26 @@ if(!isAdmin()){
             var field = id[0];
             var uid = id[1];
             $(this).html('<input id="editField" type="number" value="' + oldVal + '" style="width: 20%" />');
+            $("#editField").keyup( function(e) {
+                if(e.which === 13){
+                    $.post('postUserChange.php', { 'field': field, 'id': uid, 'value': $(this).val() }).done(function(data) {
+                        admin();
+                    });
+                }
+            });
+        }
+    });
+    
+    //TODO: Hier dropdown maken om admin aan te passen
+    $(".admin").dblclick(function() {
+        if(!isEditing){
+            isEditing = true;
+            var oldVal = $(this).html();
+            var id = $(this).attr('id');
+            id = id.split('-');
+            var field = id[0];
+            var uid = id[1];
+            $(this).html('<input id="editField" type="text" value="' + oldVal + '"/>');
             $("#editField").keyup( function(e) {
                 if(e.which === 13){
                     $.post('postUserChange.php', { 'field': field, 'id': uid, 'value': $(this).val() }).done(function(data) {
