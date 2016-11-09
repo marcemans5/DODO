@@ -222,7 +222,7 @@ if(!function_exists("isLoggedIn")){
 <script>
     function searchWed(){
         var searchStr = $("#search").val();
-        $.get("search.php", { src: searchStr }).done(function (data){
+        $.get("search.php", { type: 'wed', src: searchStr }).done(function (data){
             filterWed(data);
             
         });

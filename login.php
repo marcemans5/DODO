@@ -48,6 +48,5 @@ class login{
         $_SESSION["Achternaam"] = $qryResult["Achternaam"];
         $_SESSION["Afbeelding"] = $qryResult["Afbeelding"];
         $_SESSION["Admin"] = $qryResult["Admin"];
-        $_SESSION["Punten"] = $qryResult["Punten"];
     }
 }

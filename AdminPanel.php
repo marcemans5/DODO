@@ -21,6 +21,7 @@ if(!isAdmin()){
     exit();
 }
 ?>
+<input type="text" placeholder="Zoeken" id="searchUser" oninput="searchUser()" />
 <h1>Adminpanel</h1>
 <button id="terugBTN" class="redBtn" onclick="terug()">Terug</button>
 <table class="Tbl">
@@ -50,32 +51,23 @@ if(!isAdmin()){
             $Wedstrijden = array();
             while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
                 $id = $result['GebruikerID'];
-                echo '<tr><td>';
+                echo '<tr id="' . $id . '" class="userRij Displayed"><td>';
                 echo $id;
-                echo '</td><td id="Gebruikersnaam-';
-                echo $id;
-                echo '" class="text">';
+                echo '</td><td id="Gebruikersnaam-' . $id . '" class="text">';
                 echo $result['Gebruikersnaam'];
-                echo '</td><td id="Email-';
-                echo $id;
-                echo '" class="text">';
+                echo '</td><td id="Email-' . $id . '" class="text">';
                 echo $result['Email'];
-                echo '</td><td id="Voornaam-';
-                echo $id;
-                echo '" class="text">';
+                echo '</td><td id="Voornaam-' . $id . '" class="text">';
                 echo $result['Voornaam'];
-               echo '</td><td id="Achternaam-';
-                echo $id;
-                echo '" class="text">';
+                echo '</td><td id="Achternaam-' . $id . '" class="text">';
                 echo $result['Achternaam'];
                 echo '</td><td>';
                 echo $result['Admin'];
-                echo '</td><td id="Punten-';
-                echo $id;
-                echo '" class="number">';
+                echo '</td><td id="Punten-' . $id . '" class="number">';
                 echo $result['Punten'];
                 echo '</td></tr>';
             }
+            echo '<tr id="geenData" style="display: none"><td><span style="color: darkred">Geen data</span></td><td></td><td></td><td></td><td></td><td></td></tr>';
         ?>
     </tbody>
 </table>
@@ -124,6 +116,34 @@ if(!isAdmin()){
     function terug(){
         $.post("loginHome.php").done(function (data){
             location.reload();
+        });
+    }
+    
+    function searchUser(){
+        var searchStr = $("#searchUser").val();
+        $.get("search.php", { type: 'user', src: searchStr }).done(function (data){
+            filterUser(data);
+        });
+    }
+    
+    function filterUser(data){
+        var UserIds = data.split(',');
+        
+        $.each($(".userRij"), function (index, user){
+            if(UserIds.indexOf(user.id) === -1){
+                $(user).css("display", "none");
+                $(user).removeClass("Displayed");
+            }else{
+                $(user).css("display", "table-row");
+                $(user).addClass("Displayed");
+            }
+            $.each($("tbody"), function (index, tbody){
+                if($(tbody).find('tr.Displayed').length == 0){
+                    $(tbody).find("#geenData").css("display", "table-row");
+                }else{
+                    $(tbody).find("#geenData").css("display", "none");
+                }
+            });
         });
     }
 </script>
