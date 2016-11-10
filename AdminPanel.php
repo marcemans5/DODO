@@ -122,13 +122,19 @@ if(!isAdmin()){
             id = id.split('-');
             var field = id[0];
             var uid = id[1];
-            $(this).html('<input id="editField" type="text" value="' + oldVal + '"/>');
-            $("#editField").keyup( function(e) {
-                if(e.which === 13){
-                    $.post('postUserChange.php', { 'field': field, 'id': uid, 'value': $(this).val() }).done(function(data) {
-                        admin();
-                    });
-                }
+            var JaSel = '';
+            var NeeSel = '';
+            if(oldVal === 'Ja'){
+                JaSel = 'selected';
+            }else{
+                NeeSel = 'selected';
+            }
+            var htmlStr = '<select id="editField"><option value="1" ' + JaSel + '>Ja</option><option value="0" ' + NeeSel + '>Nee</option></select>';
+            $(this).html(htmlStr);
+            $("#editField").change( function() {
+                $.post('postUserChange.php', { 'field': field, 'id': uid, 'value': $(this).val() }).done(function(data) {
+                    admin();
+                });
             });
         }
     });
